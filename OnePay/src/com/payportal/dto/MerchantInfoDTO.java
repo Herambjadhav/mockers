@@ -8,6 +8,9 @@ public class MerchantInfoDTO {
 	String merchantId;
 	//String debitAmt;
 	List<PaymentOptionsDTO> paymentOptions;
+	String payOption;
+	String surl;
+	String furl;
 		
 		
 	public String getMerchantId() {
@@ -25,6 +28,28 @@ public class MerchantInfoDTO {
 	/*public void setPaymentOptions(List<PaymentOptionsDTO> paymentOptions) {
 		this.paymentOptions = paymentOptions;
 	}*/
-	
+	public String getPayOption() {
+		return payOption;
+	}
+	public void setPayOption(String payOption) {
+		this.payOption = payOption;
+	}
+	public String getSurl() {
+		return surl;
+	}
+	public void setSurl(String surl) {
+		this.surl = surl;
+	}
+	public String getFurl() {
+		return furl;
+	}
+	public void setFurl(String furl) {
+		this.furl = furl;
+	}
+	@Override
+	public String toString() {
+		return "MerchantInfoDTO [merchantId=" + merchantId + ", paymentOptions=" + paymentOptions + ", payOption="
+				+ payOption + ", surl=" + surl + ", furl=" + furl + "]";
+	}
 
 }

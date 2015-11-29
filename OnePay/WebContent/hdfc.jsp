@@ -53,7 +53,7 @@ p:hover {
 
 
 			<div class="form-group">
-				<label for="pwd">Amount:</label> <input type="text"
+				<label for="pwd">Amount:</label> <input type="text" readonly="readonly"
 					class="form-control" id="amt"
 					value="<%=request.getParameter("debitAmt")%>" name="amt">
 			</div>

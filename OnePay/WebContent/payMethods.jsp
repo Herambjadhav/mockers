@@ -1,3 +1,7 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="utils.MerchantCache"%>
+<%@page import="com.payportal.dto.MerchantInfoDTO"%>
+<%@page import="com.sun.javafx.collections.MappingChange.Map"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <html>
@@ -70,23 +74,88 @@
 			<fieldset>
 			<h4><span class="label label-default">Wallets & Cash Cards</span></h4>
 				<div class="form-group">
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" id="PayU" value="PayU"/><img src = "images/wallets/payuwallet.png" width = "110px" height="35px" style="padding-bottom: 5px" alt = "PayU"/></label><br>
+					<% 
+						HashMap<String, MerchantInfoDTO> map = MerchantCache.merchMap;
+						String payopt = map.get(request.getAttribute("merchantId").toString()).getPayOption();
+					%>
 					
 					<% 
-					if(!"flipkart".equalsIgnoreCase(request.getAttribute("merchantId").toString()))
+					if(payopt.contains("payu") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" id="PayU" value="PayU"/><img src = "images/wallets/payuwallet.png" width = "110px" height="35px" style="padding-bottom: 5px" alt = "PayU"/></label><br>
+					<% 
+					}
+					%>
+					
+					<% 
+					if(payopt.contains("paytm") || payopt.contains("all"))
 					{
 					%>
 					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" value="PayTM"/><img src = "images/wallets/paytm.png" width = "120px" height="35px" style="padding-bottom: 5px"  alt = "PayTM"/></label><br>
 					<% 
 					}
 					%>
+					
+					<% 
+					if(payopt.contains("MobiKwik") || payopt.contains("all"))
+					{
+					%>
 					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" value="MobiKwik"/><img src = "images/wallets/mobikwik.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "MobiKwik"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("airtel") || payopt.contains("all"))
+					{
+					%>
 					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" value="airtel"/><img src = "images/wallets/atl.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "Airtel Money"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("citrus") || payopt.contains("all"))
+					{
+					%>
 					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" value="citrus"/><img src = "images/wallets/citruswallet.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "Citrus"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("oxigen") || payopt.contains("all"))
+					{
+					%>
 					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" value="oxigen"/><img src = "images/wallets/oxi.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "Oxigen"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("m-Pesa") || payopt.contains("all"))
+					{
+					%>
 					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" value="m-Pesa"/><img src = "images/wallets/vm3.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "m-Pesa"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("smart") || payopt.contains("all"))
+					{
+					%>
 					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 10px" name="wallet" value="smart"/><img src = "images/wallets/pch.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "Smart Paisa"/></label><br>
-				
+					<% 
+					}
+					%>
+					
 
 				</div>
 				<!--
@@ -102,15 +171,86 @@
 			<fieldset>
 			<h4><span class="label label-default">Net Banking</span></h4>
 				<div class="form-group">
-						<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="HDFC"/><img src = "images/banks/hdf-na.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "HDFC"/></label><br>
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="ICICI"/><img src = "images/banks/ici-na.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "ICICI"/></label><br>
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="SBI"/><img src = "images/banks/sbi-na.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "SBI"/></label><br>
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="CITI"/><img src = "images/banks/cit-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "CITI"/></label><br>
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="PUNJ"/><img src = "images/banks/pnb-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "PNB"/></label><br>
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="UTI"/><img src = "images/banks/uti-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "UTI"/></label><br>
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="SWB"/><img src = "images/banks/swb-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "SWB"/></label><br>
-					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="IDBI"/><img src = "images/banks/idb-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "IDBI"/></label><br>				
 				
+					<% 
+					if(payopt.contains("hdfc") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="HDFC"/><img src = "images/banks/hdf-na.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "HDFC"/></label><br>
+					<% 
+					}
+					%>
+					
+					<% 
+					if(payopt.contains("icici") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="ICICI"/><img src = "images/banks/ici-na.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "ICICI"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("SBI") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="SBI"/><img src = "images/banks/sbi-na.png" width = "130px" height="45px" style="padding-bottom: 5px"  alt = "SBI"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+						
+					<% 
+					if(payopt.contains("CITI") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="CITI"/><img src = "images/banks/cit-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "CITI"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("PUNJ") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="PUNJ"/><img src = "images/banks/pnb-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "PNB"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("UTI") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="UTI"/><img src = "images/banks/uti-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "UTI"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("SWB") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="SWB"/><img src = "images/banks/swb-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "SWB"/></label><br>
+					<% 
+					}
+					%>
+					
+					
+					<% 
+					if(payopt.contains("IDBI") || payopt.contains("all"))
+					{
+					%>
+					<label class="radio-inline"><input type="radio" class="radio" style="margin-top: 15px" name="bankName" value="IDBI"/><img src = "images/banks/idb-na.png" width = "120px" height="40px" style="padding-bottom: 5px"  alt = "IDBI"/></label><br>				
+					<% 
+					}
+					%>
+				    
 				</div>
 				<!-- 
 					<input class="btn btn-success btn-block" type="submit">
