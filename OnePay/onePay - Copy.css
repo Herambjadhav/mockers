@@ -1,0 +1,45 @@
+header {
+    display: block;
+    font-weight: 600;
+	font-size:2em;
+    padding: 5 5 5 5;
+    margin-left: 5;
+    margin-right: 5;
+    margin-top: 5;
+	color:white;
+}
+.panel-default {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+section{
+    padding: 5 5 5 5;
+    margin: 5 5 5 5;
+}
+img{
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+.form-group{
+	margin-top: 10px;
+}
+input[type="submit"] {
+  padding: 10px;
+}
+input[type="text"]{
+ margin-top: 10px;
+}
+select{
+	margin-top: 10px;
+}
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.42857143;
+    color: #333;
+}
+fieldset {
+    border-style: none;
+    padding: 5 5 5 5;
+    background-color: whitesmoke;
+}
